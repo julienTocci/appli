@@ -1,5 +1,6 @@
 
 var React = require('react-native');
+var { NativeModules, Text } = React;
 var {
   StyleSheet,
   Text,
@@ -10,17 +11,15 @@ var {
   Component,
 } = React;
 
+
 var Parallax = require('react-native-parallax');
 
 var IMAGE_WIDTH = Dimensions.get('window').width;
 var IMAGE_HEIGHT = IMAGE_WIDTH / 2;
 var PIXEL_RATIO = PixelRatio.get();
 var PARALLAX_FACTOR = 0.3;
-var DRAWABLE_PREFIX = './drawable/';
-    
-var IMAGE_URI_PREFIX = 'http://loremflickr.com/' + (IMAGE_WIDTH * PIXEL_RATIO) + '/' + Math.round(IMAGE_HEIGHT * (1 + PARALLAX_FACTOR * 2) * PIXEL_RATIO) + '/'
 
-const iconsMap = {'menu0': require('./drawable/menu0.jpg')};
+
 var SECTIONS = [
   {
     title: 'RECETTE',
@@ -45,27 +44,25 @@ var SECTIONS = [
   
 ];
 
-class imageChooser {
-    constructor(props){
-        this.state = {
-            sectionchosen: null,
-        };
-    }
-}
 
-var Example = React.createClass({
-    componentDidMount: function() {
-        
-    },
+class Example extends React.Component{
+   constructor(props) {
+    super(props); 
+    this.state = {
+      movies: null,
+    };
+    }
     
-    render: function() {
+    componentDidMount() {
+    }
+    render(){
     return (
       <Parallax.ScrollView style={styles.scrollView}>
 
         <Parallax.Image
           style={styles.image}
           overlayStyle={styles.overlay}
-          source={require('./drawable/menu0.jpg')}
+          source={require('./../drawable/menu0.jpg')}
           parallaxFactor={PARALLAX_FACTOR}
         >
           
@@ -75,7 +72,7 @@ var Example = React.createClass({
         <Parallax.Image
           style={styles.image}
           overlayStyle={styles.overlay}
-          source={require('./drawable/menu1.jpg')}
+          source={require('./../drawable/menu1.jpg')}
           parallaxFactor={PARALLAX_FACTOR}
         >
           
@@ -85,7 +82,7 @@ var Example = React.createClass({
         <Parallax.Image
           style={styles.image}
           overlayStyle={styles.overlay}
-          source={require('./drawable/menu2.jpg')}
+          source={require('./../drawable/menu2.jpg')}
           parallaxFactor={PARALLAX_FACTOR}
         >
           
@@ -95,7 +92,7 @@ var Example = React.createClass({
         <Parallax.Image
           style={styles.image}
           overlayStyle={styles.overlay}
-          source={require('./drawable/menu3.jpg')}
+          source={require('./../drawable/menu3.jpg')}
           parallaxFactor={PARALLAX_FACTOR}
         >
           
@@ -104,7 +101,7 @@ var Example = React.createClass({
         <Parallax.Image
           style={styles.image}
           overlayStyle={styles.overlay}
-          source={require('./drawable/menu4.jpg')}
+          source={require('./../drawable/menu4.jpg')}
           parallaxFactor={PARALLAX_FACTOR}
         >
           
@@ -112,10 +109,10 @@ var Example = React.createClass({
         </Parallax.Image>
       </Parallax.ScrollView>
     );
-  },
-      
+  }
+   
   
-});
+}
 
 var styles = StyleSheet.create({
   image: {
@@ -150,4 +147,7 @@ var styles = StyleSheet.create({
   }
 });
 
+
 module.exports = Example;
+
+
